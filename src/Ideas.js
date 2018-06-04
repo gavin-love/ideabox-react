@@ -3,10 +3,19 @@ import Card from './Card';
 
 const Ideas = props => {
   return (
-    <Card 
-    title={props.title}
-    body={props.body}
-    />
+    <ul>
+    {
+      props.ideas.map((idea, index) => {
+        return (
+          <Card
+            title={idea.title}
+            body={idea.body}
+            key={index}
+          />
+        )
+      })
+    }
+    </ul>
   )
 }
 

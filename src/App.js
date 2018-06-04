@@ -6,16 +6,15 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      Title: '',
-      Body: ''
+      ideas: []
     }
     this.getInfo = this.getInfo.bind(this);
   }
-
-  getInfo(title, body) {
+  
+  
+  getInfo(idea) {
     this.setState({
-      Title: title,
-      Body: body
+      ideas: [...this.state.ideas, idea]
     })
   }
 
@@ -28,8 +27,7 @@ class App extends Component {
         </header>
         <Form   getInfo={this.getInfo}/>
         <Ideas 
-          title={this.state.Title}
-          body={this.state.Body}
+          ideas={this.state.ideas}
         />
       </div>
     );

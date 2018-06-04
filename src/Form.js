@@ -4,8 +4,8 @@ export default class Form extends Component {
   constructor(props) {
     super()
     this.state = {
-      Title: '',
-      Body: ''
+      title: '',
+      body: ''
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
@@ -14,20 +14,25 @@ export default class Form extends Component {
 
  updateTitle(event) {
    this.setState({
-    Title: event.target.value
+    title: event.target.value
    })
  }
 
  updateBody(event) {
    this.setState({
-     Body: event.target.value
+     body: event.target.value
    })
  }
 
  onSubmit(event) {
   event.preventDefault();
-  this.props.getInfo(this.state.Title, this.state.Body)
- }
+  this.props.getInfo(this.state)
+  this.setState({
+    title: '',
+    body: ''
+  })
+  event.target.value = ''
+}
 
 
 
