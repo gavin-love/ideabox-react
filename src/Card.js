@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-export const Card = props => {
+const Card = props => {
   return(
     <ul>
       <li>
@@ -10,3 +10,5 @@ export const Card = props => {
     </ul>
   )
 } 
+
+export default Card;

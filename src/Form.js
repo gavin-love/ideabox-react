@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 
 export default class Form extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       Title: '',
       Body: ''
     }
+    this.onSubmit = this.onSubmit.bind(this);
+    this.updateTitle = this.updateTitle.bind(this);
+    this.updateBody = this.updateBody.bind(this);
   }
 
- updateState(title, body) {
+ updateTitle(event) {
    this.setState({
-    Title: title.target.value,
-    Body: body.target.value
+    Title: event.target.value
+   })
+ }
+
+ updateBody(event) {
+   this.setState({
+     Body: event.target.value
    })
  }
 
  onSubmit(event) {
-  event.preventDefault;
+  event.preventDefault();
   this.props.getInfo(this.state.Title, this.state.Body)
  }
 
@@ -26,9 +34,9 @@ export default class Form extends Component {
   render() {
     return(
       <div>
-        <input type="text" placeholder="Title" value={this.state.Title} onChange={title => this.updateState(title)}/>
-        <input type="text" placeholder="Body" value={this.state.Body} onChange={body => this.updateState(body)}/>
-        <button>Save</button>
+        <input type="text" placeholder="Title" value={this.state.Title} onChange={event => this.updateTitle(event)}/>
+        <input type="text" placeholder="Body" value={this.state.Body} onChange={event => this.updateBody(event)}/>
+        <button onClick={this.onSubmit}>Save</button>
       </div>
     )
   }
