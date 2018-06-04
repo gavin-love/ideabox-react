@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import Card from './Card';
 
 class App extends Component {
   constructor() {
@@ -10,6 +11,13 @@ class App extends Component {
     }
   }
 
+  getInfo(title, body) {
+    this.setState({
+      Title: title,
+      Body: body
+    })
+  }
+
 
   render() {
     return (
@@ -17,7 +25,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">IdeaBox-React</h1>
         </header>
-        <Form />
+        <Form   getInfo={this.getInfo}/>
       </div>
     );
   }
